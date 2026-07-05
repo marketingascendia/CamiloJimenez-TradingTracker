@@ -277,6 +277,19 @@ MONTH_EN = ["January","February","March","April","May","June",
             "July","August","September","October","November","December"]
 DIAS = ["Lu","Ma","Mi","Ju","Vi"]
 
+# =====================================================================
+# 🛡️ COMPUERTA DE SEGURIDAD (SISTEMA DE LOGIN)
+# =====================================================================
+from login import requerir_autenticacion, boton_cerrar_sesion
+
+# Si el estudiante no se ha autenticado, se pausa la carga de toda la app aquí:
+if not requerir_autenticacion():
+    st.stop()
+
+# Si ya inició sesión correctamente, mostramos el botón de salir en la barra lateral:
+boton_cerrar_sesion()
+# =====================================================================
+
 # ─── Data persistence helpers ─────────────────────────────────────────────────
 def get_data_key(): return "trading_data_v2"
 
