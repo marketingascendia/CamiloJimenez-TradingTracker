@@ -1,0 +1,224 @@
+╔══════════════════════════════════════════════════════════════╗
+║           TRADING TRACKER — GUÍA DE INSTALACIÓN Y USO       ║
+║                  Backtesting & Seguimiento 2026              ║
+╚══════════════════════════════════════════════════════════════╝
+
+────────────────────────────────────────────────────────────────
+PASO 1 — INSTALA PYTHON (si aún no lo tienes)
+────────────────────────────────────────────────────────────────
+
+Ve a https://python.org/downloads y descarga la versión más
+reciente (3.12 o superior).
+
+Durante la instalación, activa esta casilla que aparece al inicio:
+
+    ☑  Add Python to PATH
+
+IMPORTANTE: si no activas esa casilla, nada va a funcionar.
+Una vez instalado, cierra y vuelve a abrir cualquier ventana
+de terminal antes de continuar.
+
+
+────────────────────────────────────────────────────────────────
+PASO 2 — VERIFICA QUE PYTHON QUEDÓ BIEN INSTALADO
+────────────────────────────────────────────────────────────────
+
+Abre una terminal:
+  · Windows: presiona Win + R, escribe cmd, Enter
+  · Mac:     presiona Cmd + Espacio, escribe Terminal, Enter
+
+Escribe esto y presiona Enter:
+
+    python --version
+
+Debes ver algo como:  Python 3.12.x
+
+Si ves un error, repite la instalación asegurándote de activar
+la casilla "Add Python to PATH".
+
+
+────────────────────────────────────────────────────────────────
+PASO 3 — COLOCA EL ARCHIVO EN UNA CARPETA
+────────────────────────────────────────────────────────────────
+
+Asegúrate de tener el archivo principal del programa:
+
+    trading_tracker.py
+
+Guárdalo en una carpeta de fácil acceso, por ejemplo:
+    C:\Users\TuNombre\TradingTracker\     (Windows)
+    /Users/TuNombre/TradingTracker/       (Mac)
+
+
+────────────────────────────────────────────────────────────────
+PASO 4 — ABRE LA TERMINAL DENTRO DE ESA CARPETA
+────────────────────────────────────────────────────────────────
+
+Windows:
+  1. Entra a la carpeta en el Explorador de archivos
+  2. Haz clic en la barra de direcciones (donde se ve la ruta)
+  3. Escribe:  cmd   y presiona Enter
+  → La terminal se abre ya posicionada dentro de esa carpeta
+
+Mac:
+  1. Abre la Terminal
+  2. Escribe:  cd   (con un espacio al final)
+  3. Arrastra la carpeta directamente a la ventana de Terminal
+  4. Presiona Enter
+
+Para verificar que estás en el lugar correcto, escribe:
+  · Windows:  dir
+  · Mac:      ls
+
+Debes ver el archivo  trading_tracker.py  listado ahí.
+
+
+────────────────────────────────────────────────────────────────
+PASO 5 — INSTALA LAS DEPENDENCIAS
+────────────────────────────────────────────────────────────────
+
+Copia y pega este comando exacto en la terminal y presiona Enter:
+
+    pip install streamlit pandas numpy plotly
+
+Esto instala todo lo que el programa necesita para funcionar.
+Tarda entre 1 y 4 minutos según tu conexión a internet.
+Verás texto corriendo en pantalla — es normal, espera a que
+vuelva el cursor antes de continuar.
+
+  ¿Ya lo instalaste antes y quieres actualizar todo?
+  Usa este comando en su lugar:
+
+    pip install --upgrade streamlit pandas numpy plotly
+
+
+────────────────────────────────────────────────────────────────
+PASO 6 — CORRE EL PROGRAMA
+────────────────────────────────────────────────────────────────
+
+En la misma terminal, escribe:
+
+    streamlit run trading_tracker.py
+
+Verás un mensaje similar a este:
+
+    You can now view your Streamlit app in your browser.
+
+    Local URL:  http://localhost:8501
+    Network URL: http://192.168.x.x:8501
+
+El programa se abre automáticamente en tu navegador.
+Si no se abre solo, copia  http://localhost:8501  y pégalo
+en Chrome, Firefox o Edge.
+
+NOTA: la terminal debe permanecer abierta mientras usas el
+programa. Si la cierras, el programa se detiene.
+
+Para cerrarlo correctamente, ve a la terminal y presiona:
+    Ctrl + C
+
+
+────────────────────────────────────────────────────────────────
+SECCIONES DEL PROGRAMA
+────────────────────────────────────────────────────────────────
+
+El Trading Tracker tiene 4 secciones principales:
+
+  📥  Registro de Trades
+      Ingresa tus operaciones día por día.
+      Por cada día de trading anota: número total de operaciones,
+      ganadoras, perdedoras, puntos positivos y puntos negativos.
+      El programa calcula automáticamente tasa de éxito, ratio
+      riesgo/beneficio e insight de la jornada.
+
+  📈  Dashboard Mensual
+      Visualiza el rendimiento completo del mes seleccionado:
+      curva de equidad, operaciones por día, tasa de éxito,
+      distribución de puntos y análisis de insights.
+
+  🗓️  Resumen Anual
+      Consolida todos los meses con actividad en gráficas y
+      tablas comparativas: balance acumulado, tasa anual, curva
+      de equidad global y scatter de tasa vs ratio R/B.
+
+  ⚙️  Configuración
+      Ajusta parámetros del mes (balance inicial, número de
+      contratos, comisión por trade). También puedes exportar
+      todos tus datos como archivo JSON de respaldo, cargar un
+      respaldo previo, o reiniciar los datos del año.
+
+
+────────────────────────────────────────────────────────────────
+CÓMO CONFIGURAR CADA MES
+────────────────────────────────────────────────────────────────
+
+En el panel izquierdo (sidebar) puedes:
+
+  1. Seleccionar el mes activo con el menú desplegable
+  2. Ajustar la configuración de ese mes:
+       · Balance Inicial ($)      — capital con el que arranca el mes
+       · N° de Contratos          — contratos operados (afecta resultado USD)
+       · Comisión por trade ($)   — costo por operación
+
+Estos valores se usan para calcular el resultado en dólares
+al final del mes.
+
+
+────────────────────────────────────────────────────────────────
+SOBRE EL ALMACENAMIENTO DE DATOS
+────────────────────────────────────────────────────────────────
+
+⚠️  IMPORTANTE: los datos se guardan en memoria de sesión.
+    Esto significa que si cierras el navegador o reinicias
+    el programa, los datos se pierden.
+
+Para no perder tu progreso:
+
+  1. Ve a la sección  ⚙️ Configuración
+  2. Haz clic en  ⬇️ Descargar JSON
+  3. Guarda ese archivo en un lugar seguro
+
+Cada vez que vuelvas a usar el programa, carga tu respaldo:
+  1. Ve a  ⚙️ Configuración → Cargar Datos
+  2. Sube el archivo JSON que descargaste antes
+  3. Recarga la página con F5
+
+
+────────────────────────────────────────────────────────────────
+SOLUCIÓN A PROBLEMAS FRECUENTES
+────────────────────────────────────────────────────────────────
+
+● "pip no se reconoce como comando"
+  → Repite la instalación de Python activando "Add Python to PATH"
+
+● "streamlit no se reconoce como comando"
+  → Cierra y vuelve a abrir la terminal, luego vuelve a ejecutar
+    el comando de instalación del Paso 5
+
+● El navegador no abre automáticamente
+  → Copia http://localhost:8501 y pégalo manualmente en tu
+    navegador preferido
+
+● El programa carga pero no muestra datos
+  → Ve a ⚙️ Configuración, sube tu archivo JSON de respaldo
+    y recarga la página con F5
+
+● Quiero usar el programa en otra computadora de mi red
+  → Usa la Network URL que aparece en la terminal al correr
+    el programa (http://192.168.x.x:8501)
+
+
+────────────────────────────────────────────────────────────────
+RESUMEN RÁPIDO (para las próximas veces)
+────────────────────────────────────────────────────────────────
+
+Una vez que ya tienes todo instalado, los pasos para abrir
+el programa se reducen a tres:
+
+  1. Abre la terminal en la carpeta del archivo
+  2. Escribe:   streamlit run trading_tracker.py
+  3. Carga tu respaldo JSON desde ⚙️ Configuración
+
+¡Listo! Ya puedes registrar y analizar tus operaciones.
+
+────────────────────────────────────────────────────────────────
